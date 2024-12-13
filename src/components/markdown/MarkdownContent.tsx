@@ -1,0 +1,21 @@
+import React from 'react';
+import { parseMarkdown } from '../../utils/markdown/parser';
+import 'prismjs/themes/prism-tomorrow.css';
+import '../../styles/markdown.css';
+
+interface MarkdownContentProps {
+  content: string;
+  className?: string;
+}
+
+export const MarkdownContent: React.FC<MarkdownContentProps> = ({ 
+  content,
+  className = ''
+}) => {
+  return (
+    <div 
+      className={`markdown-content ${className}`}
+      dangerouslySetInnerHTML={{ __html: parseMarkdown(content) }}
+    />
+  );
+};
